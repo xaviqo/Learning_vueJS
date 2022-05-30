@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <a href="#home" @click="cambiarPagina('home')">Home</a> - 
+        <a href="#about" @click="cambiarPagina('about')">About</a>
+        <hr />
+        <keep-alive>
+            <component :is='paginaActual'></component>
+        </keep-alive>
+    </div>
+    <script>
+
+        new Vue({
+            el: '#app',
+            data: {
+                paginaActual: 'home'
+            },
+            methods: {
+                cambiarPagina(pagina) {
+                    this.paginaActual = pagina;
+                }
+            },
+            components: {
+                home: {
+                    template: '<div> <h2> Home <p> {{datosHome}} </p> </h2> </div>',
+                    data() { // Comprobar que esto funciona!
+                        return {
+                            datosHome: `Hey! I'm @home`
+                        }
+                    },
+                },
+                about: {
+                    template: '<div> <h2> Home <p> {{datosAbout}} </p> </h2> </div>',
+                    data() { // Comprobar que esto funciona!
+                        return {
+                            datosAbout: `How about NO?`
+                        }
+                    },
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

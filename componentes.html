@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="app">
+        <contador nombre-clase="btn btn-info"></contador>
+        <contador nombre-clase="btn btn-warning"></contador>
+        <contador nombre-clase="btn btn-success"></contador>
+    </div>
+    <div id="app1">
+        <mensaje></mensaje>
+    </div>
+    <script>
+        Vue.component('contador', {
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            template : '<button v-bind:class="nombreClase" v-on:click="count++"> Click {{count}} veces </button>',
+            props: {
+                nombreClase:String
+            }
+        })
+
+        let componenteMsg = {
+            template: '<div class="alert alert-primary"> Texto de prueba </div>'
+        }
+        new Vue({
+            el: '#app'
+        })
+        new Vue({
+            el: '#app1',
+            components: {
+                mensaje:componenteMsg
+            }
+        })
+    </script>
+</body>
+
+</html>

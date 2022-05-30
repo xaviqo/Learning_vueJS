@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ejercicio 1</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        Valor A:<br />
+        <input v-model.number="valA" type="number" step="1" />
+        Valor B:<br />
+        <input v-model.number="valB" type="number" step="1" />
+        <h1> {{suma()}} </h1>
+
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el: "#app",
+            data: {
+                valA: 0,
+                valB: 0
+            },
+            methods: {
+                suma: function () {
+                    return (this.valA + this.valB)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

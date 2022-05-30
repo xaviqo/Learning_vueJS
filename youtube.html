@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Caratula YT</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input v-model="urlYT" type="text" />
+        <select v-model="size">
+            <option value="maxresdefault"> Max Res </option>
+            <option value="sddefault"> Std Res </option>
+            <option value="hqdefault"> HQ Res </option>
+        </select>
+        <br/>
+        {{urlYT}}
+        {{size}}
+        <img v-bind:src="img"/>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data: {
+                urlYT: 'https://www.youtube.com/watch?v=jNQXAC9IVRw',
+                size: 'hqdefault'
+            },
+            computed: {
+                img: function(){
+                    let ID=(this.urlYT.split("v=")[1].substring(0,11));
+                    return "https://img.youtube.com/vi/"+ID+"/"+this.size+".jpg";
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
